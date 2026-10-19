@@ -1,0 +1,15 @@
+Model release or model change.
+
+Consider:
+- what was released,
+- access and availability,
+- important architecture or training changes,
+- capabilities that materially differ from prior models,
+- practical application or fine-tuning examples,
+- evaluation results and comparison targets,
+- released artifacts,
+- licensing,
+- evaluation limitations.
+
+Do not turn specifications into a catalog.
+Organize them around the meaningful change.

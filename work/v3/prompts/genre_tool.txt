@@ -1,0 +1,14 @@
+Tool or repository.
+
+Consider:
+- what it actually does,
+- core architecture,
+- how it operates,
+- meaningful differences from existing approaches,
+- maturity,
+- supported environments,
+- practical usage requirements,
+- licensing,
+- important limitations.
+
+Do not rewrite the README in order.

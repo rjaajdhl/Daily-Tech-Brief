@@ -1,0 +1,553 @@
+{
+  "version": 1,
+  "timezone": "America/Los_Angeles",
+  "sources": [
+    {
+      "id": "openai-news",
+      "name": "OpenAI News",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://openai.com/news/rss.xml"
+    },
+    {
+      "id": "openai-alignment-blog",
+      "name": "OpenAI Alignment Research Blog",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://alignment.openai.com/rss.xml"
+    },
+    {
+      "id": "openai-misalignment-reports",
+      "name": "OpenAI Misalignment Reports and Notices",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "openai_misalignment_reports",
+      "url": "https://alignment.openai.com/misalignment-reports/"
+    },
+    {
+      "id": "google-deepmind",
+      "name": "Google DeepMind Blog",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://deepmind.google/blog/feed/basic/"
+    },
+    {
+      "id": "google-ai-blog",
+      "name": "Google AI Blog",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://blog.google/technology/ai/rss/"
+    },
+    {
+      "id": "huggingface-blog",
+      "name": "Hugging Face Blog",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://huggingface.co/blog/feed.xml"
+    },
+    {
+      "id": "microsoft-research",
+      "name": "Microsoft Research Blog",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://www.microsoft.com/en-us/research/feed/"
+    },
+    {
+      "id": "apple-ml-research",
+      "name": "Apple Machine Learning Research",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://machinelearning.apple.com/rss.xml"
+    },
+    {
+      "id": "aws-machine-learning",
+      "name": "AWS Machine Learning Blog",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "feed",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/"
+    },
+    {
+      "id": "anthropic-official",
+      "name": "Anthropic News and Research",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "search_only",
+      "url": "https://www.anthropic.com/news",
+      "query": "site:anthropic.com/news OR site:anthropic.com/research after:{date} before:{next_date} Claude Anthropic"
+    },
+    {
+      "id": "major-model-official",
+      "name": "Major model official sources",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "search_only",
+      "url": "https://huggingface.co/models",
+      "query": "after:{date} before:{next_date} (OpenAI OR Anthropic OR Gemini OR DeepMind OR xAI OR Grok OR DeepSeek OR Qwen) official model card release notes"
+    },
+    {
+      "id": "google-frontier-official",
+      "name": "Google AI and DeepMind frontier updates",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "search_only",
+      "url": "https://blog.google/technology/ai/",
+      "query": "after:{date} before:{next_date} (site:blog.google/technology/ai OR site:deepmind.google/blog) (Gemini OR agent OR model OR AI)"
+    },
+    {
+      "id": "xai-frontier-official",
+      "name": "xAI official updates",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "search_only",
+      "url": "https://x.ai/news",
+      "query": "site:x.ai/news after:{date} before:{next_date} (Grok OR model OR API OR agent OR benchmark)"
+    },
+    {
+      "id": "meta-ai-official",
+      "name": "Meta AI official updates",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "search_only",
+      "url": "https://ai.meta.com/blog/",
+      "query": "after:{date} before:{next_date} (site:ai.meta.com/blog OR site:about.fb.com/news) (Llama OR model OR agent OR AI)"
+    },
+    {
+      "id": "mistral-official",
+      "name": "Mistral AI official updates",
+      "lane": "official_ai_and_model_sources",
+      "role": "primary",
+      "kind": "search_only",
+      "url": "https://mistral.ai/news/",
+      "query": "site:mistral.ai/news after:{date} before:{next_date} (model OR API OR agent OR AI)"
+    },
+    {
+      "id": "agent-ecosystem-official",
+      "name": "Agent framework and interoperability sources",
+      "lane": "agent_runtime_and_ecosystem",
+      "role": "primary_ecosystem_source",
+      "kind": "search_only",
+      "url": "https://github.com/modelcontextprotocol",
+      "query": "after:{date} before:{next_date} (MCP OR Model Context Protocol OR LangGraph OR LlamaIndex OR AutoGen OR CrewAI OR OpenHands OR agent runtime) release OR security OR benchmark"
+    },
+    {
+      "id": "arxiv-cs-ai",
+      "name": "arXiv cs.AI",
+      "lane": "papers_and_research",
+      "role": "research",
+      "kind": "feed",
+      "url": "https://rss.arxiv.org/rss/cs.AI"
+    },
+    {
+      "id": "arxiv-cs-cl",
+      "name": "arXiv cs.CL",
+      "lane": "papers_and_research",
+      "role": "research",
+      "kind": "feed",
+      "url": "https://rss.arxiv.org/rss/cs.CL"
+    },
+    {
+      "id": "arxiv-cs-lg",
+      "name": "arXiv cs.LG",
+      "lane": "papers_and_research",
+      "role": "research",
+      "kind": "feed",
+      "url": "https://rss.arxiv.org/rss/cs.LG"
+    },
+    {
+      "id": "arxiv-cs-cr",
+      "name": "arXiv cs.CR",
+      "lane": "papers_and_research",
+      "role": "research",
+      "kind": "feed",
+      "url": "https://rss.arxiv.org/rss/cs.CR"
+    },
+    {
+      "id": "iacr-eprint",
+      "name": "IACR Cryptology ePrint",
+      "lane": "papers_and_research",
+      "role": "research",
+      "kind": "feed",
+      "url": "https://eprint.iacr.org/rss/rss.xml"
+    },
+    {
+      "id": "huggingface-daily-papers",
+      "name": "Hugging Face Daily Papers",
+      "lane": "papers_and_research",
+      "role": "research_curation",
+      "kind": "hf_daily_papers",
+      "url": "https://huggingface.co/api/daily_papers"
+    },
+    {
+      "id": "huggingface-models-radar",
+      "name": "Hugging Face Models Activity Radar",
+      "lane": "official_ai_and_model_sources",
+      "role": "model_community_signal",
+      "kind": "hf_models",
+      "url": "https://huggingface.co/api/models"
+    },
+    {
+      "id": "cisa-advisories",
+      "name": "CISA Cybersecurity Advisories",
+      "lane": "security_advisories_and_threat_research",
+      "role": "primary_advisory",
+      "kind": "feed",
+      "url": "https://www.cisa.gov/cybersecurity-advisories/all.xml"
+    },
+    {
+      "id": "cisa-kev",
+      "name": "CISA Known Exploited Vulnerabilities",
+      "lane": "security_advisories_and_threat_research",
+      "role": "primary_advisory",
+      "kind": "cisa_kev",
+      "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+    },
+    {
+      "id": "cisco-talos",
+      "name": "Cisco Talos Intelligence",
+      "lane": "security_advisories_and_threat_research",
+      "role": "vendor_research",
+      "kind": "feed",
+      "url": "https://blog.talosintelligence.com/rss/"
+    },
+    {
+      "id": "unit42",
+      "name": "Palo Alto Unit 42",
+      "lane": "security_advisories_and_threat_research",
+      "role": "vendor_research",
+      "kind": "feed",
+      "url": "https://unit42.paloaltonetworks.com/feed/"
+    },
+    {
+      "id": "microsoft-security",
+      "name": "Microsoft Security Blog",
+      "lane": "security_advisories_and_threat_research",
+      "role": "vendor_research",
+      "kind": "feed",
+      "url": "https://www.microsoft.com/en-us/security/blog/feed/"
+    },
+    {
+      "id": "github-security",
+      "name": "GitHub Security",
+      "lane": "security_advisories_and_threat_research",
+      "role": "vendor_research",
+      "kind": "feed",
+      "url": "https://github.blog/security/feed/"
+    },
+    {
+      "id": "trail-of-bits",
+      "name": "Trail of Bits Blog",
+      "lane": "security_advisories_and_threat_research",
+      "role": "independent_security_research",
+      "kind": "feed",
+      "url": "https://blog.trailofbits.com/feed/"
+    },
+    {
+      "id": "portswigger-research",
+      "name": "PortSwigger Research",
+      "lane": "security_advisories_and_threat_research",
+      "role": "independent_security_research",
+      "kind": "feed",
+      "url": "https://portswigger.net/research/rss"
+    },
+    {
+      "id": "google-project-zero",
+      "name": "Google Project Zero",
+      "lane": "security_advisories_and_threat_research",
+      "role": "primary_security_research",
+      "kind": "search_only",
+      "url": "https://googleprojectzero.blogspot.com/",
+      "query": "site:googleprojectzero.blogspot.com after:{date} before:{next_date} vulnerability exploit zero-day"
+    },
+    {
+      "id": "google-threat-intelligence",
+      "name": "Google Threat Intelligence Group",
+      "lane": "security_advisories_and_threat_research",
+      "role": "vendor_research",
+      "kind": "search_only",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence",
+      "query": "site:cloud.google.com/blog/topics/threat-intelligence after:{date} before:{next_date}"
+    },
+    {
+      "id": "vendor-psirt-search",
+      "name": "Vendor PSIRT and CERT search",
+      "lane": "security_advisories_and_threat_research",
+      "role": "primary_advisory",
+      "kind": "search_only",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories",
+      "query": "after:{date} before:{next_date} (site:msrc.microsoft.com OR site:security.googleblog.com OR site:security.apple.com OR site:mozilla.org/security OR site:cert.org) advisory CVE exploited"
+    },
+    {
+      "id": "bleepingcomputer",
+      "name": "BleepingComputer",
+      "lane": "security_specialist_reporting",
+      "role": "specialist_reporting",
+      "kind": "feed",
+      "url": "https://www.bleepingcomputer.com/feed/"
+    },
+    {
+      "id": "the-hacker-news",
+      "name": "The Hacker News",
+      "lane": "security_specialist_reporting",
+      "role": "specialist_reporting",
+      "kind": "feed",
+      "url": "https://feeds.feedburner.com/TheHackersNews"
+    },
+    {
+      "id": "krebsonsecurity",
+      "name": "KrebsOnSecurity",
+      "lane": "security_specialist_reporting",
+      "role": "specialist_reporting",
+      "kind": "feed",
+      "url": "https://krebsonsecurity.com/feed/"
+    },
+    {
+      "id": "sans-isc",
+      "name": "SANS Internet Storm Center",
+      "lane": "security_specialist_reporting",
+      "role": "specialist_reporting",
+      "kind": "feed",
+      "url": "https://isc.sans.edu/rssfeed.xml"
+    },
+    {
+      "id": "ars-technica",
+      "name": "Ars Technica",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "feed",
+      "url": "https://feeds.arstechnica.com/arstechnica/index"
+    },
+    {
+      "id": "techcrunch",
+      "name": "TechCrunch",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "feed",
+      "url": "https://techcrunch.com/feed/"
+    },
+    {
+      "id": "the-verge",
+      "name": "The Verge",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "feed",
+      "url": "https://www.theverge.com/rss/index.xml"
+    },
+    {
+      "id": "wired",
+      "name": "WIRED",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "feed",
+      "url": "https://www.wired.com/feed/rss"
+    },
+    {
+      "id": "mit-technology-review",
+      "name": "MIT Technology Review",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "feed",
+      "url": "https://www.technologyreview.com/feed/"
+    },
+    {
+      "id": "ieee-spectrum",
+      "name": "IEEE Spectrum",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "feed",
+      "url": "https://spectrum.ieee.org/feeds/feed.rss"
+    },
+    {
+      "id": "wire-and-business-tech-search",
+      "name": "Wire and business technology reporting",
+      "lane": "independent_technology_reporting",
+      "role": "independent_reporting",
+      "kind": "search_only",
+      "url": "https://www.reuters.com/technology/",
+      "query": "after:{date} before:{next_date} (site:reuters.com/technology OR site:bloomberg.com/technology OR site:ft.com/technology) AI cybersecurity cloud semiconductor"
+    },
+    {
+      "id": "github-blog",
+      "name": "GitHub Blog",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "primary_repository_platform",
+      "kind": "feed",
+      "url": "https://github.blog/feed/"
+    },
+    {
+      "id": "github-changelog",
+      "name": "GitHub Changelog",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "primary_release_notes",
+      "kind": "feed",
+      "url": "https://github.blog/changelog/feed/"
+    },
+    {
+      "id": "kubernetes-blog",
+      "name": "Kubernetes Blog",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "primary_project_source",
+      "kind": "feed",
+      "url": "https://kubernetes.io/feed.xml"
+    },
+    {
+      "id": "cncf-blog",
+      "name": "CNCF Blog",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "primary_ecosystem_source",
+      "kind": "feed",
+      "url": "https://www.cncf.io/feed/"
+    },
+    {
+      "id": "cloudflare-blog",
+      "name": "Cloudflare Blog",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "vendor_engineering",
+      "kind": "feed",
+      "url": "https://blog.cloudflare.com/rss/"
+    },
+    {
+      "id": "github-hf-discovery",
+      "name": "GitHub and Hugging Face discovery",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "repository_discovery",
+      "kind": "search_only",
+      "url": "https://github.com/trending",
+      "query": "after:{date} before:{next_date} site:github.com (agent OR MCP OR local LLM OR open-weight model OR model card OR benchmark OR AI security) release repository"
+    },
+    {
+      "id": "github-trending-daily",
+      "name": "GitHub Trending (daily)",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "github_trending",
+      "kind": "github_trending",
+      "url": "https://github.com/trending"
+    },
+    {
+      "id": "github-created-repositories",
+      "name": "GitHub newly created repositories",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "repository_discovery",
+      "kind": "github_repo_search",
+      "url": "https://api.github.com/search/repositories",
+      "query": "created:{date}..{date}",
+      "sort": "stars",
+      "order": "desc",
+      "per_page": 100
+    },
+    {
+      "id": "github-active-repositories",
+      "name": "GitHub recently active repositories",
+      "lane": "repositories_releases_and_infrastructure",
+      "role": "repository_discovery",
+      "kind": "github_repo_search",
+      "url": "https://api.github.com/search/repositories",
+      "query": "pushed:{date}..{date}",
+      "sort": "stars",
+      "order": "desc",
+      "per_page": 100
+    },
+    {
+      "id": "nvidia-blog",
+      "name": "NVIDIA Blog",
+      "lane": "semiconductors_and_compute",
+      "role": "primary_vendor",
+      "kind": "feed",
+      "url": "https://blogs.nvidia.com/feed/"
+    },
+    {
+      "id": "aws-architecture",
+      "name": "AWS Architecture Blog",
+      "lane": "semiconductors_and_compute",
+      "role": "vendor_engineering",
+      "kind": "feed",
+      "url": "https://aws.amazon.com/blogs/architecture/feed/"
+    },
+    {
+      "id": "semiconductor-primary-search",
+      "name": "Semiconductor primary and independent sources",
+      "lane": "semiconductors_and_compute",
+      "role": "mixed_primary_and_independent",
+      "kind": "search_only",
+      "url": "https://newsroom.intel.com/",
+      "query": "after:{date} before:{next_date} (site:newsroom.intel.com OR site:newsroom.amd.com OR site:nvidia.com OR site:tsmc.com OR site:reuters.com) AI chip accelerator foundry semiconductor"
+    },
+    {
+      "id": "hacker-news",
+      "name": "Hacker News via Algolia",
+      "lane": "community_signals",
+      "role": "community_signal",
+      "kind": "hn_algolia",
+      "url": "https://hn.algolia.com/api/v1/search_by_date"
+    },
+    {
+      "id": "lobsters",
+      "name": "Lobsters RSS",
+      "lane": "community_signals",
+      "role": "community_signal",
+      "kind": "feed",
+      "url": "https://lobste.rs/rss"
+    },
+    {
+      "id": "community-platform-search",
+      "name": "Cross-platform technical community discovery",
+      "lane": "community_signals",
+      "role": "community_discovery",
+      "kind": "search_only",
+      "url": "https://x.com/search",
+      "query": "after:{date} before:{next_date} (site:x.com OR site:twitter.com OR site:lobste.rs) (AI OR agent OR MCP OR cybersecurity OR exploit OR Qwen OR DeepSeek OR Llama OR semiconductor)"
+    },
+    {
+      "id": "github-discussions-search",
+      "name": "GitHub Issues and Discussions discovery",
+      "lane": "community_signals",
+      "role": "community_and_implementation_signal",
+      "kind": "search_only",
+      "url": "https://github.com/search?q=AI&type=discussions",
+      "query": "after:{date} before:{next_date} site:github.com (issues OR discussions) (agent OR MCP OR AI security OR open-weight model OR benchmark)"
+    },
+    {
+      "id": "huggingface-discussions-search",
+      "name": "Hugging Face model community discovery",
+      "lane": "community_signals",
+      "role": "model_community_signal",
+      "kind": "search_only",
+      "url": "https://huggingface.co/models",
+      "query": "after:{date} before:{next_date} site:huggingface.co (discussions OR model card) (Qwen OR DeepSeek OR GLM OR Kimi OR Mistral OR Llama OR Gemma OR benchmark)"
+    },
+    {
+      "id": "outside-bubble-discovery",
+      "name": "Outside My Usual Bubble broad discovery",
+      "lane": "outside_bubble_discovery",
+      "role": "broad_discovery",
+      "kind": "search_only",
+      "url": "https://www.google.com/search",
+      "query": "after:{date} before:{next_date} (robotics OR spacecraft OR satellite OR \"quantum computing\" OR biotech OR genomics OR battery OR \"energy storage\" OR \"materials science\" OR networking OR \"scientific instrument\" OR manufacturing OR \"human-computer interaction\") (paper OR research OR release OR demonstration OR launch OR prototype OR \"technical report\") -jobs -careers -hiring -instagram -tiktok"
+    },
+    {
+      "id": "musk-official-watchlist",
+      "name": "Entity-linked official technology watchlist",
+      "lane": "entity_linked_technology_watchlist",
+      "role": "primary_watchlist",
+      "kind": "search_only",
+      "url": "https://x.ai/news",
+      "query": "after:{date} before:{next_date} (site:x.ai OR site:spacex.com OR site:tesla.com OR site:neuralink.com OR site:starlink.com) technology announcement"
+    },
+    {
+      "id": "musk-independent-watchlist",
+      "name": "Entity-linked independent technology reporting",
+      "lane": "entity_linked_technology_watchlist",
+      "role": "independent_reporting",
+      "kind": "search_only",
+      "url": "https://www.reuters.com/technology/",
+      "query": "after:{date} before:{next_date} (xAI OR Grok OR SpaceX OR Starlink OR Neuralink OR Tesla AI) technology (site:reuters.com OR site:arstechnica.com OR site:techcrunch.com OR site:spacenews.com)"
+    }
+  ]
+}

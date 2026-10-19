@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+data/
+logs/
+cache/
+backups/
+__pycache__/
+*.pyc
+.pytest_cache/
+config/notion_ids.json
+config/notion_write_scope.json
+auth.json

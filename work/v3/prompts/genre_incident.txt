@@ -1,0 +1,16 @@
+Incident / compromise.
+
+Consider:
+- what happened,
+- when it happened,
+- affected systems or scope,
+- actual observed impact,
+- technical path,
+- sequence of actions,
+- which controls worked,
+- which boundary or control failed or was bypassed,
+- detection and response,
+- concrete remediation.
+
+Distinguish demonstrated impact from possible impact.
+Do not add a lesson or takeaway when the facts already make the significance clear.

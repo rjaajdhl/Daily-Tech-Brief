@@ -1,0 +1,13 @@
+Community-originated signal.
+
+Consider:
+- who made the claim,
+- where it was posted,
+- what was actually observed or alleged,
+- what supporting evidence is present,
+- what remains unverified,
+- technical implications of any linked primary material.
+
+If the core event is not independently verified, make that clear early.
+
+Do not invent community reaction, comment sentiment, vote counts, or consensus that is not present in the collected material.

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "profile": "tech-intelligence",
+  "job": "technology_daily",
+  "allowed_write_database_ids": [],
+  "allowed_write_view_ids": [],
+  "allowed_write_parent_page_ids": [],
+  "unlisted_external_targets": "read_only",
+  "unknown_write_operation": "deny"
+}

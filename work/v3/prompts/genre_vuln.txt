@@ -1,0 +1,17 @@
+Vulnerability.
+
+Consider:
+- affected component or application,
+- prerequisites,
+- root cause,
+- exploit path,
+- trust or permission boundary involved,
+- demonstrated reproduction,
+- affected versions or environments,
+- existing defenses and why they did or did not apply,
+- real-world exploitation status,
+- patch or mitigation,
+- limits of the reproduction.
+
+If multiple vulnerabilities or platform behaviors are discussed, keep them clearly separate.
+A concrete reproduction may be the best opening when it explains the vulnerability more clearly than starting with the root cause.

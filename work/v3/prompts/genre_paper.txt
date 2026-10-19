@@ -1,0 +1,14 @@
+Research paper.
+
+Consider:
+- the problem being studied,
+- the concrete research question,
+- the method or system introduced,
+- experimental setup,
+- comparison baseline,
+- quantitative results,
+- what the results support,
+- what they do not establish,
+- important evidence limitations.
+
+If only an abstract or partial paper text is available, preserve that limitation without repeatedly discussing source availability.

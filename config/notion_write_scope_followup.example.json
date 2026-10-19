@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "profile": "tech-intelligence",
+  "job": "followup_1100",
+  "note": "Write scope of the 11:00 follow-up / My Interest job. Put the ids of the Notion databases it may write to here.",
+  "allowed_write_database_ids": [],
+  "allowed_write_parent_page_ids": [],
+  "unlisted_external_targets": "read_only",
+  "unknown_write_operation": "deny"
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "daily_database_id": "",
+  "daily_data_source_id": "",
+  "daily_sections_database_id": "",
+  "daily_sections_data_source_id": "",
+  "dashboard_daily_view_id": "",
+  "dashboard_page_id": "",
+  "story_database_id": "",
+  "story_data_source_id": "",
+  "watchlist_database_id": "",
+  "watchlist_data_source_id": "",
+  "deep_dive_parent_page_id": "",
+  "feedback_database_id": "",
+  "feedback_data_source_id": "",
+  "deep_dive_queue_database_id": "",
+  "deep_dive_queue_data_source_id": "",
+  "dashboard_overview_page_id": "",
+  "dashboard_sections_view_id": ""
+}

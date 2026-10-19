@@ -1,0 +1,498 @@
+Write one complete Daily Tech Brief article about the event described in EVENT and SOURCES.
+
+The article must be factually precise, technically detailed, and natural to read from beginning to end. It should read like a well-edited technical news article, not a source-by-source summary, research-note reconstruction, press-release rewrite, or translated report.
+
+AUDIENCE
+
+The reader is technically experienced across AI/ML, software, cloud and infrastructure, networking, and cybersecurity.
+
+Assume familiarity with common industry terminology. Do not stop to define widely used concepts, technologies, protocols, attack classes, software components, or development terminology.
+
+Explain only names, acronyms, internal systems, specialized standards, benchmarks, legal terms, or event-specific concepts that would reasonably be unfamiliar even to an experienced technical reader.
+
+Do not simplify away technical detail merely to make the article easier to read. Improve the order and presentation of the information instead.
+
+CORE EDITORIAL PRINCIPLES
+
+1. Understand the event before deciding the structure.
+
+Do not follow the order of SOURCES, EVENT, or GENRE mechanically.
+
+Read the available material as a whole, determine what actually happened, what mechanism or conditions matter, what was demonstrated, what remains uncertain, and what changed afterward.
+
+Then organize the article in the order that makes the event easiest to understand.
+
+There is no fixed article sequence.
+
+A reproduction result may come before the root cause if that makes the issue immediately understandable.
+A mechanism may come first if the examples make little sense without it.
+A response may need to appear early if it materially changes how the event should be interpreted.
+
+The source's structure is not the article's structure.
+
+
+2. Establish a clear center of gravity.
+
+Each article should have one primary event, finding, release, vulnerability, incident, policy change, or development at its center.
+
+The headline, lead, and body should all revolve around that same center.
+
+Do not give every available fact equal weight.
+
+Prioritize the facts needed to understand:
+- what happened,
+- how it worked,
+- under what conditions,
+- what was actually demonstrated,
+- what the impact was,
+- how the relevant parties responded,
+- and what important limitations remain.
+
+Preserve useful detail. Do not remove technically meaningful material simply because it is secondary to the headline.
+
+
+3. Do not optimize for brevity.
+
+The article may be long when the event is complex and the sources contain useful detail.
+
+Preserve important:
+- technical mechanisms,
+- reproduction steps,
+- conditions,
+- environment details,
+- measurements,
+- timelines,
+- concrete examples,
+- comparisons,
+- stakeholder positions,
+- limitations,
+- remediation,
+- and response details.
+
+Remove repetition, not substance.
+
+The goal is not a short article. The goal is a dense article that remains easy to follow.
+
+
+4. Let strong facts carry the article.
+
+Do not habitually add interpretation after facts that are already self-explanatory.
+
+Avoid editorial filler such as:
+- "This highlights..."
+- "This demonstrates..."
+- "The key takeaway is..."
+- "What makes this important is..."
+- "This suggests..."
+- "The common thread is..."
+- "This is significant because..."
+
+unless the source itself makes that interpretation and the attribution matters.
+
+If a model submitted a real police tip, a server command actually executed, a live SIM redirected a call, or a vendor responded within 48 minutes, describe the fact accurately and let it stand.
+
+
+5. Explain technical mechanisms in the order a technical reader would understand them.
+
+Do not begin with a wall of implementation names when the mechanism itself has not yet been established.
+
+When useful, first explain what happens at the system level, then introduce exact implementation details such as:
+- permissions,
+- packages,
+- processes,
+- APIs,
+- intents,
+- functions,
+- headers,
+- protocol fields,
+- configuration keys,
+- or component names.
+
+Do not remove the implementation detail. Present it after the reader has enough context to understand why it matters.
+
+Likewise, do not over-explain familiar technical concepts.
+
+
+6. Keep separate issues separate.
+
+If the source material contains multiple vulnerabilities, mechanisms, incidents, follow-up findings, or platform behaviors with different causes or conditions, do not merge them into a single issue.
+
+Make their relationship clear when each first appears.
+
+A third-party application flaw and a separate platform-level flaw should not read as one vulnerability merely because they appear in the same disclosure.
+
+Use transitions such as "Separately" or "In a different path" only when they genuinely clarify the relationship. Do not turn them into repetitive structural labels.
+
+
+7. Do not turn examples into an inventory.
+
+Avoid mechanical structures such as:
+
+Example A...
+Example B...
+Example C...
+Company response...
+Mitigation...
+
+when the cases belong to a common mechanism and can be explained more naturally together.
+
+At the same time, give important examples enough space when their details materially improve understanding.
+
+Each paragraph should add a new piece of understanding rather than simply represent the next item in the source material.
+
+
+8. Preserve details that make the event concrete.
+
+Do not discard useful details solely because they appear anecdotal.
+
+Preserve details when they help the reader understand what actually occurred, such as:
+- an exact action taken by a model,
+- a specific phrase it generated,
+- how a person discovered the incident,
+- a live-system reproduction result,
+- the time between action and effect,
+- an unexpected bypass path,
+- a third party independently noticing the behavior,
+- or how quickly a vendor responded.
+
+Use judgment. Details should support the event rather than decorate the prose.
+
+
+HEADLINE
+
+Write a concrete headline that communicates what actually happened.
+
+Do not default to formulas such as:
+- "Company X announces..."
+- "Researcher Y reveals..."
+- "Vendor Z discloses..."
+
+when the actual behavior, vulnerability, incident, or technical result is more informative.
+
+The subject may still be a company or researcher when that is genuinely the clearest construction.
+
+The headline should tell the reader what happened and, where useful, the important consequence, condition, or response.
+
+Do not make the headline stronger than the sources support.
+Do not use clickbait.
+Do not turn a possibility into a demonstrated exploit or a reported claim into a confirmed incident.
+
+
+LEAD
+
+The lead should give the reader a map of the article, not merely repeat the first body paragraph in shorter form.
+
+It should naturally establish the most important combination of:
+- what happened,
+- the central mechanism or condition,
+- the demonstrated result or practical impact,
+- the most important response,
+- and any verification limitation that materially changes how the event should be read.
+
+Do not force every item into the lead.
+
+However, do not hide a major structural fact until the middle of the body.
+
+If the article contains two distinct vulnerabilities, the lead should not make them appear to be one.
+If the entire incident is based on one person's account and has not been independently verified, make that clear in the lead.
+If a result was demonstrated only in an emulator and not on a physical system, mention that early when it changes the interpretation.
+
+
+BODY
+
+Write multiple natural paragraphs separated by blank lines.
+
+Do not use section headings, bold labels, or structural labels such as:
+- Background
+- Details
+- Cause
+- Exploit
+- Impact
+- Mitigation
+- Response
+- Technical Analysis
+
+Let paragraph transitions carry the structure.
+
+Use the concrete facts in SOURCES densely when they are relevant:
+- sequence,
+- timing,
+- numbers,
+- system configuration,
+- prerequisites,
+- architecture,
+- exploit path,
+- model behavior,
+- reproduction,
+- comparisons,
+- stakeholder positions,
+- vendor/platform decisions,
+- remediation,
+- and limitations.
+
+A paragraph should have a coherent purpose, but do not mechanically assign one paragraph to every source item or example.
+
+Do not repeat the same point in the lead and multiple body paragraphs unless additional detail materially advances the story.
+
+
+PROSE AND SENTENCE FLOW
+
+Write natural professional English.
+
+Avoid repetitive sentence openings with the same company, researcher, publication, or institution.
+
+Do not produce a sequence such as:
+
+"Anthropic said..."
+"Anthropic said..."
+"Anthropic said..."
+
+or:
+
+"Saini found..."
+"Saini found..."
+"Saini found..."
+
+when the event, model, test, mechanism, component, response, or result would be a more natural grammatical subject.
+
+Do not solve repetition by replacing names mechanically with:
+- "the company,"
+- "the researcher,"
+- "the vendor,"
+
+in every following sentence.
+
+Do not solve repetition by converting everything into passive voice.
+
+Vary sentence structure naturally while preserving clear attribution whenever the identity of the speaker, evaluator, reporter, or decision-maker matters.
+
+Avoid prose that sounds like a translation, compliance report, or generated research summary.
+
+
+ATTRIBUTION
+
+Use primary sources as the preferred basis for technical facts when available.
+
+Attribute facts to a publication when they come only from that publication.
+
+Explicit attribution is especially important for:
+- personal claims,
+- disputed events,
+- company self-assessments,
+- unverified incidents,
+- interpretations,
+- future plans,
+- statements from a single publication,
+- or decisions by a specific vendor or platform.
+
+Examples:
+- "Mac said..."
+- "Google classified the report as..."
+- "According to Business Insider..."
+- "Anthropic assessed the incidents as..."
+
+Do not repeat the same attribution at the beginning of every paragraph when the source context remains clear.
+
+Source tags provide evidence separately and should still be attached to factual sentences.
+
+
+CLAIMS, VERIFICATION, AND EVIDENCE
+
+Preserve the distinction between:
+- allegation and confirmation,
+- report and independent verification,
+- planned change and completed deployment,
+- possibility and demonstrated impact,
+- emulator reproduction and physical-device reproduction,
+- lab result and production behavior,
+- vendor self-assessment and independent evaluation,
+- candidate exposure and confirmed vulnerability,
+- public availability and limited preview.
+
+If an event is based primarily on a person's claim, write it as a claim.
+
+If independent verification is important to the reader's interpretation, do not bury that fact at the end.
+
+Conversely, if a behavior was actually reproduced and documented, do not weaken it into vague possibility language.
+
+
+PRESERVE SOURCE STRENGTH
+
+Do not strengthen or weaken claims beyond the source.
+
+Preserve distinctions such as:
+- may
+- can
+- could
+- observed
+- reproduced
+- confirmed
+- assessed
+- believed
+- planned
+- deployed
+
+Do not turn "could" into "does."
+Do not turn "we believe" into an established fact.
+Do not turn a lab reproduction into evidence of exploitation in the wild.
+
+Do not weaken a confirmed reproduction into speculation when the source clearly demonstrates it.
+
+
+TECHNICAL FIDELITY
+
+Commands, configuration values, headers, code, function names, permissions, packages, protocol identifiers, and URLs must retain the original source spelling when used.
+
+Wrap exact technical strings in backticks.
+
+Do not translate, normalize, abbreviate, or rewrite them into semantically similar forms.
+
+Do not add technical meaning that is not present in the source.
+
+Numbers, dates, times, versions, quantities, prices, and units must come from SOURCES.
+
+Preserve the meaning of time ranges and time zones.
+Do not convert a time range into a single timestamp or otherwise invent precision.
+
+Do not introduce numbers merely because they would make the article feel more complete.
+
+
+LIMITATIONS
+
+State a limitation when it materially changes the meaning of the result.
+
+Examples include:
+- emulator-only reproduction,
+- no physical SIM validation,
+- vendor-only benchmark,
+- abstract-only paper,
+- community claim without independent evidence,
+- no vendor confirmation,
+- limited preview rather than public release.
+
+Describe the actual limitation directly.
+
+Do not write meta statements about the input packet such as:
+- "The provided sources do not include..."
+- "The excerpt does not say..."
+- "The available material is incomplete..."
+- "There is not enough information in the supplied text..."
+
+The reader does not know or care about the construction of the source packet.
+
+
+PREVIOUSLY PUBLISHED
+
+If PREVIOUSLY PUBLISHED is present, center the article on meaningful new facts.
+
+Repeat earlier material only when necessary to understand the update.
+
+Do not create labels such as:
+- Previous coverage
+- New information
+- Update
+
+Integrate the necessary context naturally.
+
+If there are no meaningful new facts, skip the article.
+
+
+GENRE GUIDE
+
+The GENRE GUIDE is a coverage guide, not an article template.
+
+It identifies facts that are commonly important for that type of event.
+
+Do not copy its order into the article.
+
+Choose the structure that best fits the actual event and available evidence.
+
+
+GLOSSARY
+
+The glossary is for event-specific terms that may be unfamiliar even to an experienced technical reader.
+
+Appropriate entries may include:
+- unusual internal project names,
+- uncommon standards,
+- specialized benchmarks,
+- obscure regulatory names,
+- uncommon acronyms,
+- organization-specific terminology.
+
+Do not add:
+- common technical terminology,
+- ordinary company or product names,
+- concepts whose purpose is already obvious from the article.
+
+Each definition should be one line.
+
+Do not introduce new event facts, numbers, claims, or analysis in the glossary.
+
+If nothing needs explanation, return [].
+
+
+SOURCE TAGS
+
+Every factual sentence in lead and body must end with one or more source tags such as [S1] or [S1][S3].
+
+Use only sources that actually support the full claim in that sentence.
+
+Names, numbers, dates, values, technical behavior, and quoted details must exist in SOURCES.
+
+Do not fabricate evidence to complete the prose.
+
+
+DO NOT
+
+Do not:
+- invent facts, motives, causal explanations, or implications,
+- add generic lessons or takeaways,
+- mechanically summarize SOURCES in their original order,
+- use the GENRE GUIDE as a visible or invisible article outline,
+- repeatedly begin paragraphs with the same company, researcher, or publication,
+- define common technical terms like a textbook,
+- overstate a headline,
+- describe the internal source packet to the reader,
+- add unsupported interpretation merely to make the article sound analytical,
+- turn missing source material into speculation.
+
+
+SKIP
+
+Return skip only when:
+
+1. PREVIOUSLY PUBLISHED already contains the event and SOURCES contain no meaningful new fact; or
+
+2. the available source material contains only headline-level information and does not provide enough concrete facts to write a substantive article.
+
+Do not skip because the event is difficult to explain or because the article would be long.
+
+If skipping for insufficient material, state briefly what essential information is missing.
+
+
+OUTPUT
+
+Return JSON only.
+
+Publish:
+
+{
+  "action": "publish",
+  "headline": "...",
+  "lead": "...",
+  "body": "Separate paragraphs with \n\n",
+  "glossary": [
+    {
+      "term": "...",
+      "definition": "..."
+    }
+  ]
+}
+
+Skip:
+
+{
+  "action": "skip",
+  "reason": "..."
+}

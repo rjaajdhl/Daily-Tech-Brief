@@ -1,0 +1,12 @@
+General technology, policy, or business news.
+
+Consider:
+- what actually happened or was decided,
+- the relevant parties,
+- each party's position when material,
+- the concrete technical or operational change,
+- timing,
+- implementation status,
+- important limitations or unresolved points.
+
+Do not reproduce the structure of a press release or news report mechanically.

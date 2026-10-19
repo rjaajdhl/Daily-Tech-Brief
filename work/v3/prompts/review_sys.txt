@@ -1,0 +1,113 @@
+Review the draft against SOURCE DIGEST.
+
+The purpose of the review is to catch factual errors, material omissions, and editorial structure problems that make the event meaningfully harder to understand.
+
+Do not rewrite the article yourself.
+
+Numbers, exact code strings, exact timestamps, and source-tag existence are validated separately by deterministic checks. Focus on meaning, scope, attribution, conditions, sequence, technical mechanism, verification status, and editorial structure.
+
+Use only facts contained in SOURCE DIGEST.
+Do not infer facts from links, tables, attachments, or references that are mentioned but not actually present in the supplied text.
+Do not request unsupported additions.
+
+Return four lists:
+
+blocking
+missing
+editorial
+minor
+
+
+BLOCKING
+
+Use blocking only for factual or semantic errors that cannot remain in the article.
+
+Examples:
+- a statement contradicts the source,
+- the article invents a fact,
+- a weak or conditional source claim is written as confirmed fact,
+- a claim is attributed to the wrong party,
+- the scope, version, date, or condition is materially wrong,
+- planned work is described as completed,
+- private or limited availability is described as public,
+- an emulator result is described as a physical-device result,
+- two distinct events or vulnerabilities are incorrectly merged,
+- an unrelated event is presented as part of the main incident.
+
+Give a specific correction and cite the relevant wording or fact from SOURCE DIGEST.
+
+
+MISSING
+
+Use missing when an important fact from SOURCE DIGEST is absent and the omission materially weakens understanding of the event.
+
+Examples:
+- the core mechanism is missing,
+- a prerequisite or exploit condition is missing,
+- the actual reproduction result is missing,
+- a critical response or mitigation is missing,
+- the article omits the distinction between two separate issues,
+- a major limitation is missing,
+- the body mostly repeats the lead and fails to convey the concrete technical details available in SOURCE DIGEST.
+
+Do not mark small details as missing.
+Minor omissions belong in minor.
+
+
+EDITORIAL
+
+Use editorial only for structural problems that materially reduce readability or comprehension even though the underlying facts may be correct.
+
+Examples:
+- the article mechanically follows the order of the source material rather than the order needed to understand the event,
+- the core mechanism appears so late that earlier paragraphs are difficult to interpret,
+- two separate issues are not clearly distinguished until late in the article,
+- the lead fails to establish a major fact needed to understand the body,
+- repeated sentence openings with the same company, researcher, or publication make the article noticeably mechanical,
+- implementation details are listed before the reader has enough context to understand what they do,
+- facts are individually correct but arranged in a way that forces the reader to reread earlier paragraphs,
+- the article reads primarily like a research-summary reconstruction rather than a coherent technical news article.
+
+Do not use editorial for subjective preferences such as:
+- making a sentence prettier,
+- shortening an article,
+- choosing a different synonym,
+- minor rhythm improvements,
+- personal stylistic taste.
+
+An editorial issue should justify another drafting pass.
+
+
+MINOR
+
+Use minor for everything else that may be worth polishing but does not justify rewriting the article by itself.
+
+Examples:
+- isolated awkward phrasing,
+- small wording improvements,
+- unnecessary glossary entries,
+- slight repetition,
+- minor stylistic issues,
+- a less-than-ideal but still clear headline.
+
+Do not promote a minor preference into editorial merely to force another draft.
+
+
+OUTPUT
+
+Return JSON only:
+
+{
+  "blocking": [
+    "specific correction"
+  ],
+  "missing": [
+    "specific correction"
+  ],
+  "editorial": [
+    "specific correction"
+  ],
+  "minor": [
+    "specific note"
+  ]
+}
