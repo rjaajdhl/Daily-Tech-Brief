@@ -14,7 +14,7 @@ This is **not** a standalone, `pip install`-and-go project. It was built for, an
 
 | Component | Role | Required? |
 |---|---|---|
-| **Hermes agent** with a **Codex / ChatGPT OAuth login** | every LLM call (`work/v3/llm.py` takes its credential from `hermes_cli.auth`); also the scheduler | **Yes.** No API-key path exists. Without Hermes you must rewrite `llm.py` |
+| **Hermes agent** with a **Codex / ChatGPT OAuth login** | every LLM call (`work/v3/llm.py` takes its credential from `hermes_cli.auth`); also the scheduler. **Model: `gpt-6-luna`, reasoning effort `medium`, for every stage** (see *Model and reasoning effort* for why) | **Yes.** No API-key path exists. Without Hermes you must rewrite `llm.py` |
 | **Crawl4AI** server (self-hosted) | fetches and extracts article text | **Yes.** Set `CRAWL4AI_URL` and `CRAWL4AI_API_TOKEN` |
 | **SearXNG** instance (self-hosted) | gap search for events the sources missed | **Yes.** Set `SEARXNG_URL` |
 | **Ollama** running **`bge-m3`** locally (`ollama pull bge-m3`, `http://localhost:11434`) | embeddings that narrow "is this the same event?" candidates | **Yes.** Local only; the pipeline starts Ollama itself if it is down |
@@ -22,6 +22,60 @@ This is **not** a standalone, `pip install`-and-go project. It was built for, an
 
 Nothing else is supported. There is no hosted-API embedding option, no other LLM provider, and no other output target.
 Crawl4AI, SearXNG and Ollama are expected on the same machine or LAN; none of them needs a public address.
+
+### Model and reasoning effort
+
+Every LLM stage (extract, match, refresh, novelty, select, curate, write, review) uses one model and one setting:
+**`gpt-6-luna` at reasoning effort `medium`**, through the Codex OAuth login. The defaults live in `work/v3/llm.py`.
+`V3_MODEL` and `V3_EFFORT` (`low`, `medium`, `high`, `xhigh`, `max`) change all stages at once; there is no per-stage routing.
+
+#### Why `gpt-6-luna`
+
+* **Price.** At OpenAI's published Standard prices (per 1M tokens, checked 2026-10-05) Luna is $0.10 input / $0.50 output;
+  `gpt-6.1-sol` is $2 / $10 and `gpt-6-astra` is $10 / $50, i.e. 20x and 100x. The pipeline calls the model for every article
+  (about 1,000-1,600 a day), every event match and every written article, so per-call price dominates the design. Extracting
+  1,630 articles one call each costs about $0.52 on Luna, $10.5 on Sol and $52 on Astra.
+* **One model, not a mix.** The first plan used Luna for extraction, matching and scoring and Sol for the novelty check and
+  the writing (about $2-3 a day). Because Luna is already a frontier-tier model, the author dropped Sol and put every stage on
+  Luna (about $0.1-0.2 a day at API prices). The plan was to move only a stage back to Sol if it showed a quality problem; the
+  two stages to watch were the new-fact check and the writing.
+* **OAuth, not API keys.** The calls go through a ChatGPT/Codex login, so the real limit is the plan's usage window, not dollars.
+  The dollar figures above are only a relative measure of token volume.
+* **Not benchmarked:** Luna was never compared with Sol on output quality. The choice rests on price and on Luna being
+  sufficient in use; if you have the budget, Sol or Astra for the writing stage is the obvious experiment.
+
+#### Why `medium`
+
+The pipeline originally ran Luna at `max`. On 2026-10-05 the same 24 articles went through the extraction step at `low`,
+`medium`, `high` and `max` (identical prompt and input, only `reasoning.effort` differed), and `medium` and `max` were run a
+second time to measure run-to-run noise.
+
+| Effort | Output tokens / article | of which reasoning | Seconds / article | Valid cards |
+|---|---|---|---|---|
+| low | 138 | 0 | 3.6 | 24/24 |
+| **medium** | 200-215 | 67-78 | 4.5-5.4 | 24/24 |
+| high | 264 | 126 | 6.0 | 24/24 |
+| max | 469-507 | 323-361 | 9.3-9.4 | 24/24 |
+
+| Agreement with `max` (24 articles) | Event type | Event date | Entity-list overlap |
+|---|---|---|---|
+| low | 20 | 23 | 0.69 |
+| **medium** | 19-22 | 23 | 0.72-0.77 |
+| high | 20 | 22 | 0.80 |
+| `max` run 1 vs `max` run 2 (noise floor) | 19 | 23 | 0.78 |
+| `medium` run 1 vs `medium` run 2 | 22 | 23 | 0.76 |
+
+* **Cost and time.** `medium` used about 58% fewer output tokens than `max` and about half the time. The saving is real but
+  mostly lands on extraction (about a fifth of a day's tokens); writing is about 60% of the tokens.
+* **Quality.** Every number written on a card was present in the source text (100%) at every setting. The cards that differ
+  differ mostly in the event-type label of ambiguous articles, and `max` disagrees with its own second run as often as `medium`
+  disagrees with `max`. So lowering the effort did not make the cards measurably worse. With 24 articles this shows "no visible
+  loss", not "identical".
+* **Not benchmarked:** writing, selection, novelty and review were not compared across effort levels. They run at `medium`
+  because the setting is global; their quality at `medium` was judged from production output, not from a controlled test.
+* Per-call numbers (tokens, seconds, validity, event type and date; no article text) are in
+  [`docs/benchmarks/effort_extract_2026-10-05.csv`](docs/benchmarks/effort_extract_2026-10-05.csv). The comparison script is not
+  included because it reads the author's private article store.
 
 ## How do I use this?
 

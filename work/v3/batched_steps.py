@@ -1,7 +1,7 @@
 """Batched extraction/scoring adapters; callers own caches and model configuration.
 
 Inject existing llm.call_json and llm.parallel; provider defaults (gpt-6-luna,
-reasoning max), usage accounting, transport retries and quota handling stay there.
+reasoning medium), usage accounting, transport retries and quota handling stay there.
 Only extraction prompt excerpts are capped; full original records are returned.
 """
 from __future__ import annotations

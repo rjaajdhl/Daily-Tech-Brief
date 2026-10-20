@@ -1,4 +1,4 @@
-"""Codex OAuth client for the v3 pipeline (gpt-6-luna, reasoning max).
+"""Codex OAuth client for the v3 pipeline (gpt-6-luna, reasoning medium).
 
 Uses Hermes's own Codex token resolution (auto-refresh), no API key.
 """

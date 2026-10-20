@@ -26,7 +26,7 @@ do not claim a step worked unless you saw it work.
 1. A **Notion integration token** (`NOTION_API_KEY`) and a parent page to build in. The workspace itself is described in
    `docs/NOTION_SCHEMA.md` (two databases, a Dashboard page, one linked view): read that page and create it for the user
    with the Notion API, fill `config/notion_ids.json`, and ask before writing outside the page they named.
-2. Hermes with a working **Codex/ChatGPT OAuth login**. `work/v3/llm.py` gets its credential from `hermes_cli.auth`.
+2. Hermes with a working **Codex/ChatGPT OAuth login**. `work/v3/llm.py` gets its credential from `hermes_cli.auth`. All stages use `gpt-6-luna` at reasoning effort `medium` (README, *Model and reasoning effort*); `V3_MODEL` / `V3_EFFORT` change them together.
 3. **Ollama** with `bge-m3` (`ollama pull bge-m3`) on `http://localhost:11434`.
 4. A **Crawl4AI** server and a **SearXNG** instance (URLs and token for `.env`).
 5. Their own **interests**: the scoring rubric `SELECT_SYS` in `work/v3/pipeline.py` and `config/source_registry.json`
