@@ -196,6 +196,10 @@ Files: `scripts/interest_collect.py`, `scripts/followup_tools.py`, `scripts/setu
 `work/interest/` (collect, extract, store, notion_io, my_interest), `work/new-prompts/followup.md`, `work/feedback.py`,
 `work/v3/feedback_bridge.py`. `config/notion_write_scope_followup.json` is a separate write allow-list for this job.
 
+## License
+
+MIT, see `LICENSE`. The example articles at the end of this file quote third-party sources for illustration; that text belongs to the original publishers.
+
 ## Example output
 
 Real output of one run: the brief for **2026-10-14** (evidence date; published the next morning). Article text is exactly as published. **Sources are masked on purpose:** each issue lists how many sources it had as `Sources (N): XXX`, and any link left in the prose is replaced by `XXX`.
