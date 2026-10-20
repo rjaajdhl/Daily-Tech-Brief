@@ -37,8 +37,7 @@ hermes skills inspect rjaajdhl/Daily-Tech-Brief/skills/daily-tech-brief     # re
 hermes skills install rjaajdhl/Daily-Tech-Brief/skills/daily-tech-brief
 ```
 
-Then, in a Hermes chat: *"Set up the daily-tech-brief pipeline and schedule it for 04:00."* A private repository needs
-`gh auth login` (or `GITHUB_TOKEN`) first so Hermes can read it.
+Then, in a Hermes chat: *"Set up the daily-tech-brief pipeline and schedule it for 04:00."*
 
 **2. Do it by hand.** Follow *Setup* and *Running* below, then schedule `scripts/v3_daily.py` with cron or a Hermes cron
 job (Hermes only runs scripts that live in `$HERMES_HOME/scripts/`, so use a two-line wrapper; the skill shows it).
