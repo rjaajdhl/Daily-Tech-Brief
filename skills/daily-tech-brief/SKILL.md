@@ -23,9 +23,9 @@ do not claim a step worked unless you saw it work.
 
 ## What the user must provide (ask; never invent or guess)
 
-1. A **Notion integration token** (`NOTION_API_KEY`) and a workspace laid out as `config/notion_ids.example.json` describes
-   (Daily database, Sections database, Dashboard page, feedback and queue databases). Nothing in this repo creates that
-   workspace. If it does not exist, stop and tell the user what is missing.
+1. A **Notion integration token** (`NOTION_API_KEY`) and a parent page to build in. The workspace itself is described in
+   `docs/NOTION_SCHEMA.md` (two databases, a Dashboard page, one linked view): read that page and create it for the user
+   with the Notion API, fill `config/notion_ids.json`, and ask before writing outside the page they named.
 2. Hermes with a working **Codex/ChatGPT OAuth login**. `work/v3/llm.py` gets its credential from `hermes_cli.auth`.
 3. **Ollama** with `bge-m3` (`ollama pull bge-m3`) on `http://localhost:11434`.
 4. A **Crawl4AI** server and a **SearXNG** instance (URLs and token for `.env`).

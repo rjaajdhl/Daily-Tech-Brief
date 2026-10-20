@@ -43,6 +43,9 @@ Then, in a Hermes chat: *"Set up the daily-tech-brief pipeline and schedule it f
 **2. Do it by hand.** Follow *Setup* and *Running* below, then schedule `scripts/v3_daily.py` with cron or a Hermes cron
 job (Hermes only runs scripts that live in `$HERMES_HOME/scripts/`, so use a two-line wrapper; the skill shows it).
 
+The Notion workspace is the one manual part: build it from [`docs/NOTION_SCHEMA.md`](docs/NOTION_SCHEMA.md) (or hand that
+page to your agent), then fill `config/notion_ids.json`.
+
 Either way, the first thing to edit is what *you* care about: `SELECT_SYS` in `work/v3/pipeline.py` and
 `config/source_registry.json`. Run `python work/v3/run_daily.py --no-publish` first and read the articles it writes to
 `data/v3/<date>/articles.jsonl`. Notion is still required for that run, because the preflight check verifies it.
@@ -86,8 +89,9 @@ Design points worth knowing:
   `http://localhost:11434` (`V3_OLLAMA_BASE`).
 * A [Crawl4AI](https://github.com/unclecode/crawl4ai) server and a [SearXNG](https://github.com/searxng/searxng)
   instance for page extraction and gap search (URLs in `.env`).
-* A Notion integration and a workspace laid out the way `config/notion_ids.example.json` describes
-  (a Daily database, a Sections database, a Dashboard page, feedback/queue databases). You must create these yourself.
+* A Notion integration and a workspace with two databases (Daily Briefs, Daily Brief Sections), a Dashboard page and one
+  linked view. **Nothing here creates them**; [`docs/NOTION_SCHEMA.md`](docs/NOTION_SCHEMA.md) lists every property, type,
+  option, page layout and id key, read from a working workspace. A human can follow it, and so can an agent.
 
 ## Setup
 
@@ -95,7 +99,7 @@ Design points worth knowing:
 git clone <this repo> && cd Daily-Tech-Brief
 export TI_ROOT="$PWD"                      # all paths resolve from here; data/ and logs are created beneath it
 cp .env.example .env                       # fill in NOTION_API_KEY, TI_NOTION_ROOT_PAGE_ID, SEARXNG_URL, CRAWL4AI_URL, CRAWL4AI_API_TOKEN
-cp config/notion_ids.example.json config/notion_ids.json                  # fill in your Notion ids
+cp config/notion_ids.example.json config/notion_ids.json                  # fill in your Notion ids (see docs/NOTION_SCHEMA.md)
 cp config/notion_write_scope.example.json config/notion_write_scope.json  # allow-list of Notion targets the job may write
 cp config/notion_write_scope_followup.example.json config/notion_write_scope_followup.json  # same, for the 11:00 feedback job
 python -m pip install -r requirements.txt
@@ -123,6 +127,7 @@ work/                    shared Notion/section/feedback helpers inherited from e
 work/v3/prompts/         writer, reviewer and genre prompts (this is where the editorial voice lives)
 config/source_registry.json   the 65 sources and how each is fetched
 config/*.example.json         templates for the Notion ids and write allow-list
+docs/NOTION_SCHEMA.md         the Notion databases, properties and page layout the publisher needs
 ```
 
 ## Known limits
